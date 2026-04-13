@@ -1,6 +1,6 @@
 #  Study Streak Tracker
 
-Track all your daily study streak and stay consistent 🔥
+Track all your daily study streak and stay consistent 
 
 ##  Features
 - Add daily study session
