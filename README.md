@@ -6,7 +6,7 @@ Track all your daily study streak and stay consistent
 - Add daily study session.
 - Automatic streak calculation.
 - Backend with Flask.
-- JSON data storage
+- JSON data storage.
 
 ##  Tech Stack
 - Python (Flask)
