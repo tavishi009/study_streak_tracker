@@ -2,7 +2,7 @@
 
 Track all your daily study streak and stay consistent 
 
-##  Features
+## Features
 - Add daily study session.
 - Automatic streak calculation.
 - Backend with Flask.
