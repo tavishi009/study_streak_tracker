@@ -42,12 +42,11 @@ def index():
 def add():
     data = load_data()
     today = datetime.now().strftime("%Y-%m-%d")
-
     if today not in data:
         data.append(today)
         save_data(data)
-
-    return jsonify({"message": "Session added"})
+        return jsonify({"message": "Session added", "date": today})
+    return jsonify({"message": "Already logged today", "date": today})
 
 @app.route("/stats")
 def stats():
