@@ -59,6 +59,11 @@ def stats():
         "streak": streak,
         "studied_today": studied_today
     })
+@app.route("/history")
+def history():
+    data = load_data()
+    data_sorted = sorted(data, reverse=True)
+    return jsonify({"history": data_sorted, "count": len(data_sorted)})
 
 if __name__ == "__main__":
     app.run(debug=True)
