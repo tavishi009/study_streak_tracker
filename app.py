@@ -48,17 +48,16 @@ def add():
         return jsonify({"message": "Session added", "date": today})
     return jsonify({"message": "Already logged today", "date": today})
 
-@app.route("/stats")
-def stats():
+@app.route("/delete", methods=["POST"])
+def delete():
     data = load_data()
-    streak = calculate_streak(data)
-    today = datetime.now().strftime("%Y-%m-%d")
-    studied_today = today in data
-    return jsonify({
-        "total_days": len(data),
-        "streak": streak,
-        "studied_today": studied_today
-    })
+    date = request.json.get("date")
+    if date in data:
+        data.remove(date)
+        save_data(data)
+        return jsonify({"message": f"Removed {date}"})
+    return jsonify({"message": "Date not found"}), 404
+
 @app.route("/history")
 def history():
     data = load_data()
