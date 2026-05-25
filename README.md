@@ -78,3 +78,4 @@ Data is stored locally in `data.json`. It will not sync across devices.
 
 ---
 
+*Last updated: May 2026*
