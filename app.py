@@ -6,6 +6,18 @@ app = Flask(__name__)
 
 DATA_FILE = "data.json"
 
+def get_motivational_message(streak):
+    if streak == 0:
+        return "Start today — every expert was once a beginner!"
+    elif streak == 1:
+        return "Great start! Come back tomorrow to build your streak."
+    elif streak < 5:
+        return f"{streak} days strong! Keep the momentum going."
+    elif streak < 10:
+        return f"Impressive! {streak} day streak — you're building a habit."
+    else:
+        return f"Incredible! {streak} days straight — you're unstoppable!"
+
 def load_data():
     try:
         with open(DATA_FILE, "r") as f:
