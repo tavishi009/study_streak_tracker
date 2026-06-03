@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 app = Flask(__name__)
 
@@ -77,6 +77,14 @@ def history():
     data = load_data()
     data_sorted = sorted(data, reverse=True)
     return jsonify({"history": data_sorted, "count": len(data_sorted)})
+
+@app.route("/weekly")
+def weekly():
+    data = load_data()
+    today = date.today()
+    week = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(6, -1, -1)]
+    result = [{"date": d, "studied": d in data} for d in week]
+    return jsonify({"week": result})
 
 if __name__ == "__main__":
     app.run(debug=True)
