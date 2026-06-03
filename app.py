@@ -34,6 +34,20 @@ def calculate_streak(dates):
 
     return streak
 
+def calculate_longest_streak(dates):
+    if not dates:
+        return 0
+    dates = sorted([datetime.strptime(d, "%Y-%m-%d") for d in dates])
+    longest = 1
+    current = 1
+    for i in range(1, len(dates)):
+        if dates[i] - dates[i-1] == timedelta(days=1):
+            current += 1
+            longest = max(longest, current)
+        else:
+            current = 1
+    return longest
+
 @app.route("/")
 def index():
     return render_template("index.html")
